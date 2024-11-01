@@ -1,74 +1,67 @@
-# Homework Task
+# Greenhouse gas FFT
 
-**Take the FFT of the CO2/methane data of the most recent monthly average CO2 data of any of the the stations listed in (https://www.esrl.noaa.gov/gmd/dv/data/index.php?category=Greenhouse%2BGases&parameter_name=Carbon%2BDioxide&frequency=Monthly%2BAverages))**.
+**Take the FFT of the CO2/methane data available at the [NOAA Global Monitoring Lab](https://gml.noaa.gov).**
 
-In particular fullfill three tasks (one for each group member):
+This Homework is seperated into three task groups (data collection, data preparation, and data presentation)
 
-**Task 1:**
-- Write a function that calculates the actual frequency in useful units.
-- Determine the frequency (ideally with a function) of the peak(s).
+## Task group 1 data collection (3 members)
+Check the license for the available data and add an appropiate license / NOTES for the repository
+- Collect the CO2 data of the Mount Lua observatory (1 member due Monday 2pm)
+- Collect the CO2 data in the same time range (minimum of 5 years) of one station on each continent available (1 member due Wednesday 2pm)
+- Collect the methane data in the same time range (minimum of 5 years) of one station on each continent available (1 member due Wednesday 2pm)
 
-**Task 2:**
-Use some combination of waveform modification (which may include padding, windowing, taking the FFT, manipulating the waveforms, inverse FFT, and undoing the window+padding), to do the following:
-- Clean up either high or low frequency noise (depends on your data) in the time domain by zeroing the appropriate waveform coefficients in the frequency domain.
-- Plot both the "raw" and "cleaned" spectra in the time domain.
+## Task group 2 data preparation (5 members)
+Work on one single data preparation module called `preparation.py`  that contains the following functions:
+- for padding / unpadding the data (1 member due Monday 2pm)
+- windowing / unwindowing with a selection of windows (1 member due Wednesday 2pm)
+- fft / inverse fft using numpy and calculating the actual frequency in useful units (1 member due Monday 2pm)
+- that removes high / low frequency noise (1 member due Wednesday 2pm)
+- that calculates the actual frequency in useful units (1 member due Wednesday 2pm)
+- determine the frequency of the peak(s) (1 member due Friday 2pm)
 
-**Task 3:**
-- Write the documentation
+All functions must also include docstrings and unit tests in `test_preparation.py`
+
+## Task group 3 data presentation (max 6 members)
+Work on a single data analysis Jupyter notebook using functions from `preparation.py` that contain for each task below only *one plot*:
+
+- combined plot of cleaned up and raw data by using some combination of waveform modification (which should include padding, windowing, taking the FFT, removing noise, inverse FFT, and undoing the window+padding) of the CO2 data of the Mount Lua observatory in the time domain (1 member due Friday 2pm)
+- combined plot of cleaned up spectra by using some combination of waveform modification (which should include padding, windowing, taking the FFT, removing noise, inverse FFT, and undoing the window+padding) of the CO2 data of the Mount Lua observatory in the frequency domain that also highlights the peak(s) (1 member due Friday 2pm)
+- combined plot of cleaned up and raw data by using some combination of waveform modification (which should include padding, windowing, taking the FFT, removing noise, inverse FFT, and undoing the window+padding) of the CO2 data on available continents in the time domain (1 member due Friday 2pm)
+- combined plot of cleaned up spectra by using some combination of waveform modification (which should include padding, windowing, taking the FFT, removing noise, inverse FFT, and undoing the window+padding) of the CO2 data on available continents in the frequency domain that also highlights the peak(s) (1 member due Friday 2pm)
+- cleaned up and raw data by using some combination of waveform modification (which should include padding, windowing, taking the FFT, removing noise, inverse FFT, and undoing the window+padding) of the methane data on available continents in the time domain (1 member due Friday 2pm)
+- cleaned up spectra by using some combination of waveform modification (which should include padding, windowing, taking the FFT, removing noise, inverse FFT, and undoing the window+padding) of the methane data on available continents in the frequency domain that also highlights the peak(s) (1 member due Friday 2pm)
+
+
+## Task group 4 maintainers (max 2 members)
 - Reuse github actions for linting and unit tests
-- write unit tests for Task1 and Task 2
+- Merge PR
+- assign Reviews after member requests
   
 ---
-
-For this you have to complete the following steps:
-
-- Discuss with the other groups using issues which station data you will use. Each group should use a different one.
-- Discuss in this repository using issues who will do which task (specified above)
-- Discuss who should be the main responsible for the repository (the one that can accept merge requests, let me know in discord so I can adjust rights)
-- Discuss and generate milestone for your project to optimize the timeline of your project
-- Discuss and generate labels for your issues
-- Fork this repository
-- Merge the necessary fies from the original homework project into your fork
-- commit
-- create merge requests for your work
-
-Also use discord for discussing solutions to any issues popping up.
-
 ## Grading
 
 | Homework Points                  |                |              |            |
 | -------------------------------- | -------------- | ------------ | ---------- |
 |                                  |                |              |            |
-| Interaction on own project       |                |              |            |
+| Interaction on project           |                |              |            |
 | Category                         | min per person | point factor | max points |
-| Commits                          | 6              | 1            | 6          |
-| Merge requests                   | 3              | 1            | 3          |
-| Merge Accepted                   | 1              | 1            | 1          |
-| Branches                         | 2              | 0.5          | 1          |
-| Issues                           | 10             | 0.5          | 5          |
-| Closed Issues                    | 5              | 0.2          | 1          |
-| \# Conversations                 | 30             | 0.2          | 6          |
+| Commits                          | 1              | 1            | 1          |
+| Pull requests                    | 1              | 4            | 4          |
+| PR Accepted                      | 1              | 4            | 4          |
+| Other PR reviewed (by request)   | 1              | 4            | 4          |     
+| Issues                           | 1              | 1            | 1          | 
+| Closed Issues                    | 1              | 1            | 1          |
+| \# Conversations                 | 12             | 1/4          | 3          |
 |                                  |                |              |            |
-| Total                            |                |              | 23         |
+| Total                            |                |              | 18         |
 |                                  |                |              |            |
 | Shared project points            |                |              |            |
-| \# Label                         | 5              | 0.2          | 1          |
-| \# Milestones                    | 2              | 1            | 2          |
-| \# Tags                          | 0              | 1            | 0          |
+| \# Milestones                    | 12             | 1/4          | 3          |
 |                                  |                |              |            |
-| Total                            | 7              |              | 5          |
+| Total                            |                |              | 21         |
 |                                  |                |              |            |
-|                                  |                |              |            |
-| Interaction on others project(s) |                |              |            |
-| Category                         | min per person | point factor | max points |
-| Commits                          | 3              | 1            | 3          |
-| Branches                         | 1              | 0.5          | 0.5        |
-| Issues                           | 9              | 0.5          | 4.5        |
-| \# Conversations                 | 15             | 0.2          | 3          |
-|                                  |                |              |            |
-| Total                            | 22             |              | 11         |
 |                                  |                |              |            |
 | Result                           |                |              |            |
-| Task completion                  | 5              | 1            | 5          |
+| Task completion                  |                |              | 21         |
 |                                  |                |              |            |
 | Sum                              |                |              | 42         |
