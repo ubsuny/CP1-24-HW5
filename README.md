@@ -14,6 +14,7 @@ For the data use a common layout (columns and rows) and to add to the repository
 ## Task group 2 data preparation (6 members)
 Work on one single data preparation module called `preparation.py`  that contains the following functions:
 - function that reads in the json files from the data collection task and returns a pandas time series with the index being a datetime object and the data being the concentration of CO2 / methane (1 member due Wednesday 2pm)
+
 All following functions should assume as an input a pandas time series with the index being a datetime object and the data being the concentration of CO2 / methane or its fourier equivalent (index: frequency; data: power spectrum)
 - fft / inverse fft using numpy and calculating the actual frequency in useful units (1 member due Monday 2pm)
 - for padding / unpadding the data including a way to set a reasonable padding value (either automagically or manual) (1 member due Wednesday 2pm)
