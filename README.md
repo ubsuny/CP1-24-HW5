@@ -13,11 +13,10 @@ For the data use a common layout (columns and rows) and to add to the repository
 
 ## Task group 2 data preparation (5 members)
 Work on one single data preparation module called `preparation.py`  that contains the following functions:
-- for padding / unpadding the data (1 member due Monday 2pm)
-- windowing / unwindowing with a selection of windows (1 member due Wednesday 2pm)
 - fft / inverse fft using numpy and calculating the actual frequency in useful units (1 member due Monday 2pm)
+- for padding / unpadding the data including a way to set a reasonable padding value (either automagically or manual) (1 member due Wednesday 2pm)
+- windowing / unwindowing with a selection of windows (1 member due Wednesday 2pm)
 - that removes high / low frequency noise (1 member due Wednesday 2pm)
-- that calculates the actual frequency in useful units (1 member due Wednesday 2pm)
 - determine the frequency of the peak(s) (1 member due Friday 2pm)
 
 All functions must also include docstrings and unit tests in `test_preparation.py`
