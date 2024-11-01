@@ -6,7 +6,7 @@ This Homework is seperated into three task groups (data collection, data prepara
 
 ## Task group 1 data collection (3 members)
 Check the license for the available data and add an appropiate license / NOTES for the repository.
-For the data use a common layout (columns and rows) and to add to the repository use `pandas.DataFrame.to_pickle` (see https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_pickle.html)
+For the data use a common layout (columns and rows) and to add to the repository use `pandas.DataFrame.to_json` (see https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_json.html)
 - Collect the CO2 data of the Mount Lua observatory and store in the repository as a pandas dataframe (1 member due Monday 2pm)
 - Collect the CO2 data in the same time range (minimum of 5 years) of one station on each continent available and store in the repository as a pandas dataframe (1 member due Wednesday 2pm)
 - Collect the methane data in the same time range (minimum of 5 years) of one station on each continent available and store in the repository as a pandas dataframe (1 member due Wednesday 2pm)
