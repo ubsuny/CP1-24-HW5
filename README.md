@@ -2,7 +2,7 @@
 
 **Take the FFT of the CO2/methane data available at the [NOAA Global Monitoring Lab](https://gml.noaa.gov).**
 
-This Homework is seperated into three task groups (data collection, data preparation, and data presentation)
+This Homework is seperated into three task groups (data collection, data preparation, and data presentation) and the same rules apply as in HW4.
 
 ## Task group 1 data collection (3 members)
 Check the license for the available data and add an appropiate license / NOTES for the repository.
