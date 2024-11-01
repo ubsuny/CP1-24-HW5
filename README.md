@@ -5,10 +5,11 @@
 This Homework is seperated into three task groups (data collection, data preparation, and data presentation)
 
 ## Task group 1 data collection (3 members)
-Check the license for the available data and add an appropiate license / NOTES for the repository
-- Collect the CO2 data of the Mount Lua observatory (1 member due Monday 2pm)
-- Collect the CO2 data in the same time range (minimum of 5 years) of one station on each continent available (1 member due Wednesday 2pm)
-- Collect the methane data in the same time range (minimum of 5 years) of one station on each continent available (1 member due Wednesday 2pm)
+Check the license for the available data and add an appropiate license / NOTES for the repository.
+For the data use a common layout (columns and rows) and to add to the repository use `pandas.DataFrame.to_pickle` (see https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_pickle.html)
+- Collect the CO2 data of the Mount Lua observatory and store in the repository as a pandas dataframe (1 member due Monday 2pm)
+- Collect the CO2 data in the same time range (minimum of 5 years) of one station on each continent available and store in the repository as a pandas dataframe (1 member due Wednesday 2pm)
+- Collect the methane data in the same time range (minimum of 5 years) of one station on each continent available and store in the repository as a pandas dataframe (1 member due Wednesday 2pm)
 
 ## Task group 2 data preparation (5 members)
 Work on one single data preparation module called `preparation.py`  that contains the following functions:
@@ -25,11 +26,11 @@ All functions must also include docstrings and unit tests in `test_preparation.p
 Work on a single data analysis Jupyter notebook using functions from `preparation.py` that contain for each task below only *one plot*:
 
 - combined plot of cleaned up and raw data by using some combination of waveform modification (which should include padding, windowing, taking the FFT, removing noise, inverse FFT, and undoing the window+padding) of the CO2 data of the Mount Lua observatory in the time domain (1 member due Friday 2pm)
-- combined plot of cleaned up spectra by using some combination of waveform modification (which should include padding, windowing, taking the FFT, removing noise, inverse FFT, and undoing the window+padding) of the CO2 data of the Mount Lua observatory in the frequency domain that also highlights the peak(s) (1 member due Friday 2pm)
+- plot of cleaned up power spectrum by using some combination of waveform modification (which should include padding, windowing, taking the FFT, removing noise, inverse FFT, and undoing the window+padding) of the CO2 data of the Mount Lua observatory in the frequency domain that also highlights the peak(s) (1 member due Friday 2pm)
 - combined plot of cleaned up and raw data by using some combination of waveform modification (which should include padding, windowing, taking the FFT, removing noise, inverse FFT, and undoing the window+padding) of the CO2 data on available continents in the time domain (1 member due Friday 2pm)
-- combined plot of cleaned up spectra by using some combination of waveform modification (which should include padding, windowing, taking the FFT, removing noise, inverse FFT, and undoing the window+padding) of the CO2 data on available continents in the frequency domain that also highlights the peak(s) (1 member due Friday 2pm)
+- combined plot of cleaned up power spectra by using some combination of waveform modification (which should include padding, windowing, taking the FFT, removing noise, inverse FFT, and undoing the window+padding) of the CO2 data on available continents in the frequency domain that also highlights the peak(s) (1 member due Friday 2pm)
 - cleaned up and raw data by using some combination of waveform modification (which should include padding, windowing, taking the FFT, removing noise, inverse FFT, and undoing the window+padding) of the methane data on available continents in the time domain (1 member due Friday 2pm)
-- cleaned up spectra by using some combination of waveform modification (which should include padding, windowing, taking the FFT, removing noise, inverse FFT, and undoing the window+padding) of the methane data on available continents in the frequency domain that also highlights the peak(s) (1 member due Friday 2pm)
+- cleaned up power spectra by using some combination of waveform modification (which should include padding, windowing, taking the FFT, removing noise, inverse FFT, and undoing the window+padding) of the methane data on available continents in the frequency domain that also highlights the peak(s) (1 member due Friday 2pm)
 
 
 ## Task group 4 maintainers (max 2 members)
