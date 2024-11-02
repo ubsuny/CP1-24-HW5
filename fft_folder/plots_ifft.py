@@ -4,7 +4,7 @@ plots_ifft.py
 I will deleate this file this will be used for me for checking
 if my code is funtioning proprly
 """
-
+import os
 import matplotlib.pyplot as plt
 
 
