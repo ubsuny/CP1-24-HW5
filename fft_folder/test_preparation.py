@@ -4,10 +4,8 @@ test_preparation.py
 this will be edited latter this is just for me atm
 
 """
-import pandas as pd
-import os
-import math as m
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 
 from fft_folder.preparation import analyze_signal, anze_revm_trnd
@@ -25,4 +23,3 @@ freq, magnitude, main_frequencies, use_filt = analyze_signal(original_signal, ma
 plot_results(t, original_signal, freq, magnitude, use_filt)
 
 print("Main Frequencies:", main_frequencies)
-

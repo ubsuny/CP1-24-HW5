@@ -5,9 +5,11 @@ inverse fast fourie transform
 the function analyze_signal inputs
 signal, tim, use_filter, selec_filter
 signal the data, tim means the span of time in sec that goes by,
-use_filter just means if you want to filter out noise if you want to enter yes if not anything else works
-selec_filter is where you enter your filter, for exapmple entering if you enter 0.1 the function finds the
-largest freqency and only gives you the frequencies that are larger than 0.1 times the largest
+use_filter just means if you want to filter out noise if you want to enter yes if not
+anything else works
+selec_filter is where you enter your filter, for exapmple entering if you enter 0.1 the
+function finds the largest freqency and only gives you the frequencies that are larger
+than 0.1 times the largest
 
 the function analyze_signal outputs 
 freq, magnitude, main_frequencies, use_filt
@@ -16,22 +18,25 @@ main_frequencies are the values found when you use a filter, use_filt is just fo
 
 
 the function anze_revm_trnd
-so this function does all the same things as the function before only finds a best fit function to try and
-remove the overall trend in the signal data. it computs the following trends and finds the best fit by computing
-and compairing their adjusted r^2 values. the trends include quadratic, cubic, quartic and exponential
+so this function does all the same things as the function before only finds a best fit function to
+try and remove the overall trend in the signal data. it computs the following trends and finds the
+best fit by computing and compairing their adjusted r^2 values. the trends include quadratic,
+cubic, quartic and exponential
 
-"""
+pylint
+pytest
+import numpy as np
 import pandas as pd
-import os
-import math as m
+matplotlib
+"""
 import numpy as np
 
 def analyze_signal(signal, tim, use_filter, selec_filter):
     """finds the frequencies"""
-    N = len(signal)
-    fs = N/tim
+    n = len(signal)
+    fs = n/tim
     isfft = np.fft.fft(signal)
-    freq = np.fft.fftfreq(N, 1/fs)
+    freq = np.fft.fftfreq(n, 1/fs)
 
     use_filt = 0
     filt = 0.0
@@ -48,8 +53,7 @@ def analyze_signal(signal, tim, use_filter, selec_filter):
 
 def anze_revm_trnd(signal, tim, use_filter, selec_filter):
     """same as analyze_signal but removes overall trend"""
-    N = len(signal)
-    fs = N/tim
+    n = len(signal)
     ss_total = np.sum((signal['y'] - np.mean(signal['y']))**2)
 
 
@@ -58,7 +62,7 @@ def anze_revm_trnd(signal, tim, use_filter, selec_filter):
 
     res_quad = np.sum((signal['y'] - y_quad)**2)
     r_sq_quad = 1 - (res_quad / ss_total)
-    r_quad_adj = 1 - ((1 - r_sq_quad) * (N - 1) / (N - 3))
+    r_quad_adj = 1 - ((1 - r_sq_quad) * (n - 1) / (n - 3))
 
 
     params_cubic = np.polyfit(signal['x'], signal['y'], 3)
@@ -66,7 +70,7 @@ def anze_revm_trnd(signal, tim, use_filter, selec_filter):
 
     res_cub = np.sum((signal['y'] - y_cubic)**2)
     r_sq_cub = 1 - (res_cub / ss_total)
-    r_cub_adj = 1 - ((1 - r_sq_cub) * (N - 1) / (N - 4))
+    r_cub_adj = 1 - ((1 - r_sq_cub) * (n - 1) / (n - 4))
 
 
     params_quartic = np.polyfit(signal['x'], signal['y'], 4)
@@ -74,7 +78,7 @@ def anze_revm_trnd(signal, tim, use_filter, selec_filter):
 
     res_tic = np.sum((signal['y'] - y_tic)**2)
     r_sq_tic = 1 - (res_tic / ss_total)
-    r_tic_adj = 1 - ((1 - r_sq_tic) * (N - 1) / (N - 5))
+    r_tic_adj = 1 - ((1 - r_sq_tic) * (n - 1) / (n - 5))
 
 
     log_y = np.log(signal['y'])
@@ -84,7 +88,7 @@ def anze_revm_trnd(signal, tim, use_filter, selec_filter):
     ss_tot_ep = np.sum((log_y - np.mean(log_y))**2)
     ss_residual = np.sum((log_y - y_linear)**2)
     r_sq_ep = 1 - (ss_residual / ss_tot_ep)
-    r_ep_adj = 1 - ((1 - r_sq_ep) * (N - 1) / (N - 2))
+    r_ep_adj = 1 - ((1 - r_sq_ep) * (n - 1) / (n - 2))
 
     find_sml = min(r_quad_adj, r_cub_adj, r_tic_adj, r_ep_adj)
 
@@ -95,14 +99,12 @@ def anze_revm_trnd(signal, tim, use_filter, selec_filter):
     if find_sml == r_tic_adj:
         signalnew = signal['y'] - y_tic
     else:
-        A = np.exp(params_linear[1])
-        B = params_linear[0]
-        y_ep = A * np.exp(B * signal['x'])
+        y_ep = (np.exp(params_linear[1])) * np.exp((params_linear[0]) * signal['x'])
         signalnew = signal['y'] - y_ep
 
 
     isfft = np.fft.fft(signalnew)
-    freq = np.fft.fftfreq(N, 1/fs)
+    freq = np.fft.fftfreq(n, tim/n)
 
     use_filt = 0
     filt = 0.0

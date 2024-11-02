@@ -1,13 +1,10 @@
 """
 plots_ifft.py
 
-to be deleated
-
+I will deleate this file this will be used for me for checking
+if my code is funtioning proprly
 """
-import pandas as pd
-import os
-import math as m
-import numpy as np
+
 import matplotlib.pyplot as plt
 
 
