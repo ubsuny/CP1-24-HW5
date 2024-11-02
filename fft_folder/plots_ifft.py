@@ -1,6 +1,8 @@
 """
 plots_ifft.py
 
+to be deleated
+
 """
 import pandas as pd
 import os
@@ -9,7 +11,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def plot_results(t, unalt_data, bins, magnitude, use_filt):
+def plot_results(t, unalt_data, freq, magnitude, use_filt):
     plt.figure(figsize=(12, 8))
 
     if use_filt == 1:
@@ -25,11 +27,11 @@ def plot_results(t, unalt_data, bins, magnitude, use_filt):
     plt.legend()
 
     plt.subplot(2, 1, 2)
-    plt.plot(bins, magnitude, label=lble)
+    plt.plot(freq, magnitude, label=lble)
     plt.title('Magnitude Spectrum')
     plt.xlabel('Frequency [Hz, 1/s]')
     plt.ylabel('Magnitude')
-    plt.xlim(0, max(bins)/2)
+    plt.xlim(0, max(freq)/2)
     plt.legend()
 
     plt.tight_layout()
