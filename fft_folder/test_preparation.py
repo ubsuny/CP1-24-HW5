@@ -25,3 +25,4 @@ freq, magnitude, main_frequencies, use_filt = analyze_signal(original_signal, ma
 plot_results(t, original_signal, freq, magnitude, use_filt)
 
 print("Main Frequencies:", main_frequencies)
+

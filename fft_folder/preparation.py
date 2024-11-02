@@ -89,7 +89,7 @@ def anze_revm_trnd(signal, tim, use_filter, selec_filter):
     find_sml = min(r_quad_adj, r_cub_adj, r_tic_adj, r_ep_adj)
 
     if find_sml == r_quad_adj:
-        signalnew = signal['y'] - y_poly
+        signalnew = signal['y'] - y_quad
     if find_sml == r_cub_adj:
         signalnew = signal['y'] - y_cubic
     if find_sml == r_tic_adj:
