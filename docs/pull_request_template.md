@@ -3,6 +3,9 @@ For this assignment all pull requests going  forward should contain the followin
 # Title
   - A ledgible title that briefly describes the contents of the pull request.
 
+## Linting
+  - Does you code lint?
+
 ## Contents
   - A ledgible description that indepthly describes the contents of the pull request.
   - A list of files that are new / changed
@@ -12,7 +15,7 @@ For this assignment all pull requests going  forward should contain the followin
   - ALL pull requests must have an attached label and Milestone before a reviewer can be assigned.
 
 ## Reviewer
-  - add a sugggested reviwer here
+  - add a sugggested reviewer here
 
 Any further questions on formatting pull requests can be asked in the issues tab or on discord. 
 This document can be changed at any time.
