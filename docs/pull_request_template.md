@@ -3,8 +3,8 @@ For this assignment all pull requests going  forward should contain the followin
 # Title
   - A ledgible title that briefly describes the contents of the pull request.
 
-## linting
-  - does you code lint?
+## Linting
+  - Does you code lint?
 
 ## Contents
   - A ledgible description that indepthly describes the contents of the pull request.
