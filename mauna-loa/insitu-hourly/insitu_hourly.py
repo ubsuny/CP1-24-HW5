@@ -20,7 +20,7 @@ File Structure:
 import pandas as pd
 
 # Load the file, skipping the metadata rows and treating nonsensical values as NaN
-df = pd.read_csv('mauna-loa/insitu-hourly/insitu_hourly_raw.txt', delim_whitespace=True, skiprows=159, na_values="-999.99")
+df = pd.read_csv('mauna-loa/insitu-hourly/insitu_hourly_raw.txt', delim_whitespace=True, skiprows=165, na_values="-999.99")
 
 # Extract relevant columns and rename for clarity
 df_extracted = df[["datetime", "time_decimal", "value", "value_std_dev"]]
