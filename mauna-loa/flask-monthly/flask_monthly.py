@@ -10,7 +10,7 @@ Dependencies:
     - pandas: for loading, processing, and saving the data.
 
 File Structure:
-    - Input file: 'mauna-loa/flask-monthly/flask_monthly.txt' (raw data file)
+    - Input file: 'mauna-loa/flask-monthly/flask_monthly_raw.txt' (raw data file)
     - Output files:
         - CSV: 'mauna-loa/flask-monthly/flask_monthly.csv'
         - JSON: 'mauna-loa/flask-monthly/flask_monthly.json'
@@ -20,7 +20,7 @@ File Structure:
 import pandas as pd
 
 # Load the file, skipping the metadata rows and treating '-999.99' as NaN for missing values
-df = pd.read_csv('mauna-loa/flask-monthly/flask_monthly.txt', delim_whitespace=True, skiprows=54, na_values="-999.99")
+df = pd.read_csv('mauna-loa/flask-monthly/flask_monthly_raw.txt', delim_whitespace=True, skiprows=54, na_values="-999.99")
 
 # Extract relevant columns
 df_extracted = df[["Year", "Month", "Value"]]
