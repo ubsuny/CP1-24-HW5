@@ -10,7 +10,7 @@ Dependencies:
     - pandas: for loading, processing, and saving the data.
 
 File Structure:
-    - Input file: 'mauna-loa/flask-discrete/flask_discrete.txt' (raw data file)
+    - Input file: 'mauna-loa/flask-discrete/flask_discrete_raw.txt' (raw data file)
     - Output files:
         - CSV: 'mauna-loa/flask-discrete/flask_discrete.csv'
         - JSON: 'mauna-loa/flask-discrete/flask_discrete.json'
@@ -21,7 +21,7 @@ import pandas as pd
 
 # Load the file, skipping the metadata rows
 # Assign NaN to -999.99 nonsensical values
-df = pd.read_csv('mauna-loa/flask-discrete/flask_discrete.txt', delim_whitespace=True, skiprows=149, na_values="-999.99")
+df = pd.read_csv('mauna-loa/flask-discrete/flask_discrete_raw.txt', delim_whitespace=True, skiprows=149, na_values="-999.99")
 
 # Extract relevant columns
 df_extracted = df[['datetime', 'time_decimal', 'value', 'value_unc']]
