@@ -3,7 +3,7 @@ Module to load, process, and save CO₂ concentration data from the Mauna Loa Ob
 
 This module performs the following tasks:
 1. Loads a CO₂ data file from the Mauna Loa Observatory's flask sampling dataset.
-2. Extracts relevant columns: Timestamp, Fractional Year, CO₂ concentration (ppm), and standard deviation (ppm).
+2. Extracts relevant columns: Time, Month, and CO₂ concentration (ppm).
 3. Saves the processed data as a CSV, JSON, and Markdown file.
 
 Dependencies:
