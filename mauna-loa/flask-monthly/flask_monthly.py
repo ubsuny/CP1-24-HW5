@@ -22,13 +22,19 @@ import pandas as pd
 
 # Load the file, skipping the metadata rows and treating '-999.99' as NaN for missing values
 df = pd.read_csv('mauna-loa/flask-monthly/flask_monthly_raw.txt', delim_whitespace=True,
-                 skiprows=54, na_values="-999.99")
+                 skiprows=53, na_values="-999.99")
 
 # Extract relevant columns
-df_extracted = df[["Year", "Month", "Value"]]
+df_extracted = df[["year", "month", "value"]]
 
 # Rename the 'Value' column to 'CO2 (ppm)' in the extracted DataFrame
-df_extracted.rename(columns={'Value': 'CO2 (ppm)'}, inplace=True)
+df_extracted.rename(columns={'value': 'CO2 (ppm)'}, inplace=True)
+
+# Combine 'Year' and 'Month' into a single 'Timestamp' column and convert to datetime
+df_extracted['Timestamp'] = pd.to_datetime(df_extracted[['year', 'month']].assign(DAY=1))
+
+# Drop the original 'Year' and 'Month' columns
+df_extracted.drop(columns=['year', 'month'], inplace=True)
 
 # Output to CSV
 df_extracted.to_csv('mauna-loa/flask-monthly/flask_monthly.csv', index=False)
