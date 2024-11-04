@@ -32,6 +32,9 @@ df_extracted = df[['datetime', 'time_decimal', 'value', 'value_unc']]
 # Assign more meaningful names to columns
 df_extracted.columns = ['Timestamp', 'Fractional Year', 'CO2 (ppm)', 'Standard Deviation (ppm)']
 
+# Convert 'Timestamp' to datetime format
+df_extracted['Timestamp'] = pd.to_datetime(df_extracted['Timestamp'], utc=True)
+
 # Output to CSV
 df_extracted.to_csv('mauna-loa/surface-discrete/surface_discrete.csv', index=False)
 
