@@ -1,16 +1,20 @@
 """
-Module to load, process, and save CO₂ concentration data from the Mauna Loa Observatory.
+Module to load, process, and save CO₂ concentration data from the
+Mauna Loa Observatory.
 
 This module performs the following tasks:
-1. Loads a CO₂ data file from the Mauna Loa Observatory's flask sampling dataset.
+1. Loads a CO₂ data file from the Mauna Loa Observatory's flask sampling
+dataset.
 2. Extracts relevant columns: year, month, and CO₂ concentration (ppm).
-3. Saves the processed data as a CSV, JSON, and Markdown file, and an additional JSON file
+3. Saves the processed data as a CSV, JSON, and Markdown file, and an
+additional JSON file
 with no NaN values.
 Dependencies:
     - pandas: for loading, processing, and saving the data.
 
 File Structure:
-    - Input file: 'mauna-loa/flask-monthly/flask_monthly_raw.txt' (raw data file)
+    - Input file: 'mauna-loa/flask-monthly/flask_monthly_raw.txt'
+    (raw data file)
     - Output files:
         - CSV: 'mauna-loa/flask-monthly/flask_monthly.csv'
         - JSON: 'mauna-loa/flask-monthly/flask_monthly.json'
@@ -20,8 +24,10 @@ File Structure:
 
 import pandas as pd
 
-# Load the file, skipping the metadata rows and treating '-999.99' as NaN for missing values
-df = pd.read_csv('mauna-loa/flask-monthly/flask_monthly_raw.txt', delim_whitespace=True, skiprows=53, na_values="-999.99")
+# Load the file, skipping the metadata rows
+# Treating '-999.99' as NaN for missing values
+df = pd.read_csv('mauna-loa/flask-monthly/flask_monthly_raw.txt', delim_whitespace=True,
+                 skiprows=53, na_values="-999.99")
 
 # Extract relevant columns
 df_extracted = df[["year", "month", "value"]]
@@ -42,10 +48,12 @@ df_extracted = df_extracted[['Timestamp', 'CO2 (ppm)']]
 df_extracted.to_csv('mauna-loa/flask-monthly/flask_monthly.csv', index=False)
 
 # Convert to JSON and save it
-df_extracted.to_json('mauna-loa/flask-monthly/flask_monthly.json', orient='records', date_format='iso')
+df_extracted.to_json('mauna-loa/flask-monthly/flask_monthly.json', orient='records',
+                     date_format='iso')
 
 # Create a filtered JSON file without NaN values
-df_extracted.dropna().to_json('mauna-loa/flask-monthly/flask_monthly_no_nan.json', orient='records', date_format='iso')
+df_extracted.dropna().to_json('mauna-loa/flask-monthly/flask_monthly_no_nan.json',
+                              orient='records', date_format='iso')
 
 # Convert to Markdown and save it
 with open('mauna-loa/flask-monthly/flask_monthly.md', 'w', encoding='utf-8') as md_file:
