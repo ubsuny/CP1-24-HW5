@@ -59,13 +59,13 @@ def plot_rets(freq, magnitude,):
         print("Plot not saved.")
 
 
-
+anze_revm_trnd(data, tim, "yes", 10)
 
 def anze_revm_trnd(signal, tim, use_filter, selec_filter):
     """keeping this for now for adj r^2 calc"""
     n = len(signal)
     ss_total = np.sum((signal['y'] - np.mean(signal['y']))**2)
-
+365.15
 
     params_quadratic = np.polyfit(signal['x'], signal['y'], 2)
     y_quad = np.polyval(params_quadratic, signal['x'])
