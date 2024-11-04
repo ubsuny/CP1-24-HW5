@@ -25,13 +25,16 @@ import pandas as pd
 # Load the file, skipping the metadata rows
 # Assign NaN to -999.99 nonsensical values
 df = pd.read_csv('mauna-loa/flask-discrete/flask_discrete_raw.txt', delim_whitespace=True,
-                 skiprows=149, na_values="-999.99")
+                 skiprows=148, na_values="-999.99")
 
 # Extract relevant columns
 df_extracted = df[['datetime', 'time_decimal', 'value', 'value_unc']]
 
 # Assign more meaningful names to columns
 df_extracted.columns = ['Timestamp', 'Fractional Year', 'CO2 (ppm)', 'Standard Deviation (ppm)']
+
+# Convert 'Timestamp' to datetime format
+df_extracted['Timestamp'] = pd.to_datetime(df_extracted['Timestamp'], utc=True)
 
 # Output to CSV
 df_extracted.to_csv('mauna-loa/flask-discrete/flask_discrete.csv', index=False)
