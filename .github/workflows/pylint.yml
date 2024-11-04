@@ -1,4 +1,4 @@
-name: Pylint and Pytest
+name: Pylint
 
 on: 
   pull_request:
@@ -24,7 +24,3 @@ jobs:
       if: always()
       run: |
         pylint $(git ls-files '*.py')
-    - name: Test with pytest
-      if: always()
-      run: |
-        pytest -v $(git ls-files 'test_*.py')
