@@ -4,12 +4,13 @@ test_preparation.py
 unit test for the functions fft, calc_freq, inv_fft
 
 """
+
+from datetime import datetime, timedelta
 import numpy as np
 import pandas as pd
-from datetime import datetime, timedelta
-import matplotlib.pyplot as plt
 
-from preparation import fft_powerspectrum, fft_mag
+from preparation import fft_powerspectrum, fft_mag, get_timeseries
+
 #from thid import plot_rets
 
 """
@@ -50,6 +51,21 @@ def test_inv_fft(data):
     invdata = inv_fft(data)
     assert len(invdata) == len(data)
 """
+
+def test_get_timeseries_date_column_length():
+    '''
+    This function tests that the length of co2_series (output of get_timeseries) 
+    has the same length of the original file.
+    '''
+    co2_series = get_timeseries('/mauna-loa-data/flask_monthly.json')
+
+    #Check that the length of the Series matches the original data length
+    original_data = pd.read_json('/mauna-loa-data/flask_monthly.json')
+    original_length = len(original_data)  # Count of rows in the JSON data
+    assert len(co2_series) == original_length, (
+        "Length of the datetime index should match the length of the original Month column."
+    )
+
 matr = fft_powerspectrum(data)
 
 print(matr)
