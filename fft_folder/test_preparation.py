@@ -1,72 +1,37 @@
 """
 test_preparation.py
 
-unit test for the functions fft, calc_freq, inv_fft
+unit test for the functions fft_powerspectrum, fft_mag, inv_fft, calc_freq
 
 """
+from datetime import datetime, timedelta
 import numpy as np
 import pandas as pd
-from datetime import datetime, timedelta
-import matplotlib.pyplot as plt
-
-from preparation import fft_powerspectrum, fft_mag
-#from thid import plot_rets
-
-"""
-t = np.linspace(0, 2, 2000, endpoint=False)
-f1, f2 = 50, 120
-data = pd.Series(np.sin(f1*t)+0.5*np.sin(f2*t),index=range(0,len(t)))
-# index_values = data.index.tolist()
-freq = calc_freq(data)
-print(freq)
-print(inv_fft(data))
-print(data)
-plot_rets(freq,fft(data))
-"""
-
-t = np.linspace(0, 2, 2000, endpoint=False)
-f1, f2 = 50, 120
-data = pd.Series(np.sin(2*np.pi*f1*t)+0.5*np.sin(2*np.pi*f2*t),index=range(0,len(t)))
-
-#trange = date_range(datetime.now(), datetime.now()+pd.timedelta(days=9),freq='d')
-#trange[i].timestamp()
-
-"""
-def test_fft(data):
-
-    magnitudes = fft(data)
-    assert len(magnitudes) == len(data)
-
-def test_calc_freq(data, f1, f2):            
-    freq = calc_freq(data)
-    lngth = len(data)/2
-    newf1 = f1 + lngth
-    newf2 = f2 + lngth
-    assert len(freq) == len(data)
-    assert freq[newf1] > 200
-    assert freq[newf2] > 200
-
-def test_inv_fft(data):
-    invdata = inv_fft(data)
-    assert len(invdata) == len(data)
-"""
-matr = fft_powerspectrum(data)
-
-print(matr)
-
-#freq = calc_freq(data)
-# plot_rets(freq,fft(data))
-
-#print(np.isclose(0, 0.0001, atol=0.001))
+from preparation import fft_powerspectrum, fft_mag, inv_fft, calc_freq
 
 trange = pd.date_range(datetime.now(), datetime.now()+timedelta(days=9),freq='d')
-data1 = pd.Series([1,2,3,4,5,6,7,8,9,10],index=trange)
+data = pd.Series([1,2,3,2,1,2,3,2,1,2],index=trange)
 
+def test_fft_powerspectrum(time_series_data):
+    """test the powerspectrums length and type of export"""
+    powrspec = fft_powerspectrum(time_series_data)
+    assert len(powrspec) == len(time_series_data)/2
+    assert isinstance(powrspec, np.ndarray)
 
+def test_fft_mag(time_series_data):
+    """test the fft_mag length and type of export"""
+    magnitudes = fft_mag(time_series_data)
+    assert len(magnitudes) == len(time_series_data)
+    assert isinstance(magnitudes, np.ndarray)
 
-print(len(data1))
+def test_inv_fft(time_series_data):
+    """tests inv_fft length export aswell as testing to see if
+    the fit matches the data"""
+    invdata = inv_fft(fft_mag(time_series_data))
+    assert len(invdata) == len(time_series_data)
+    assert np.allclose(invdata, time_series_data.values, atol=1e-4)
 
-print(data1.index[0].timestamp())
-
-
-print(data1.iloc[2] * 1)
+def test_calc_freq(time_series_data):
+    """calcs the length of the export of calc_freq"""
+    freq = calc_freq(time_series_data, 'seconds')
+    assert len(freq) == len(time_series_data)
