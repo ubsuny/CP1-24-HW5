@@ -1,0 +1,424 @@
+<HTML>
+<BODY>
+<PRE>
+---------------------------------------------------------------------
+
+Atmospheric Carbon Dioxide Dry Air Mole Fractions from 
+NOAA GML Tall Tower and other Continental Sites  
+2005-Present
+
+Version: 2023-08-23
+--------------------------------------------------------------------
+CONTENTS
+
+1.       Data source and contacts
+2.       Use of data
+2.1      Citation
+3.       License 
+4.       Warnings
+5.       Update notes
+6.       Introduction
+7.       DATA - General Comments
+7.1      DATA - Sampling Locations
+7.2      DATA - File Name Description
+7.3      DATA - File Types
+7.4      DATA - Content
+7.5      DATA - QC Flags
+7.6      DATA - Collection Methods
+8.       Data retrieval
+9.       References
+
+--------------------------------------------------------------------
+1. DATA SOURCE AND CONTACTS
+
+National Oceanic and Atmospheric Administration (NOAA)
+Global Monitoring Laboratory (GML)
+Carbon Cycle Greenhouse Gases (CCGG)
+
+Correspondence concerning these data should be directed to:
+
+Xin Lan
+NOAA Global Monitoring Laboratory
+325 Broadway, GML-1
+Boulder, CO  80305
+U.S.A.
+
+email: Xin.Lan@noaa.gov
+
+--------------------------------------------------------------------
+2. USE OF DATA
+
+These data are made freely available to the public and the scientific
+community in the belief that their wide dissemination will lead to
+greater understanding and new scientific insights. To ensure that GML
+receives fair credit for their work please include relevant citation
+text in publications. We encourage users to contact the data providers,
+who can provide detailed information about the measurements and
+scientific insight.  In cases where the data are central to a
+publication, coauthorship for data providers may be appropriate.
+
+
+
+2.1 CITATION
+
+Please reference these data as
+
+   Andrews, A., Crotwell, A., Crotwell, M., Handley, P., Higgs, J., Kofler, J.,
+   Lan, X., Legard, T., Madronich, M., McKain, K., Miller, J., Moglia, E., Mund,
+   J., Neff, D., Newberger, T., Petron, G., Turnbull, J., Vimont, I., Wolter, S., &
+   NOAA Global Monitoring Laboratory. (2023). NOAA Global Greenhouse Gas Reference
+   Network Flask-Air PFP Sample Measurements of CO2 at Tall Tower and other
+   Continental Sites, 2005-Present [Data set]. NOAA GML. 
+   https://doi.org/10.15138/gr3w-qm07 Version: 2023-08-23.
+
+--------------------------------------------------------------------
+3. LICENSE
+
+<p>These data were produced by NOAA and are not subject to copyright
+protection in the United States. NOAA waives any potential copyright and
+related rights in these data worldwide through the Creative Commons Zero
+1.0 Universal Public Domain Dedication (CC0 1.0)</p><a
+
+href=https://creativecommons.org/publicdomain/zero/1.0?ref=chooser-v1 style="display:inline-
+block;" target="_blank">CC0 1.0 Universal<img
+
+src=https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1
+style="height:22px!important; margin-left:3px;" /><img
+src=https://mirrors.creativecommons.org/presskit/icons/zero.svg?ref=chooser-v1
+style="height:22px!important; margin-left:3px;" /></a>
+
+
+
+--------------------------------------------------------------------
+4. WARNINGS
+
+Every effort is made to produce the most accurate and precise
+measurements possible.  However, we reserve the right to make
+corrections to the data based on recalibration of standard gases
+or for other reasons deemed scientifically justified.
+
+We are not responsible for results and conclusions based on use
+of these data without regard to this warning.
+
+
+--------------------------------------------------------------------
+5. UPDATE NOTES
++++++++++++++++++++++++++++++++
+Lab-wide notes:
+
+2011-10-07
+
+We introduced the term "measurement group", which identifies
+the group within NOAA or Institute of Arctic and Alpine Research (INSTAAR)
+University of Colorado Boulder that made the measurement.  We can 
+now have multiple groups measuring some of the same trace gas species 
+in our discrete samples.  
+
+Measurement groups within NOAA and INSTAAR are 
+
+  ccgg:  NOAA Carbon Cycle Greenhouse Gases group (CCGG)
+  hats:  NOAA Halocarbons and other Atmospheric Trace Species group (HATS)
+  arl:   INSTAAR Atmospheric Research Laboratory (ARL)
+  sil:   INSTAAR Stable Isotope Laboratory (SIL)
+  curl:  INSTAAR Laboratory for Radiocarbon Preparation and Research (CURL)
+
++++++++++++++++++++++++++++++++
+
+Project-specific notes:
+
+2022-11-01
+
+Datasets are provided in the self describing ObsPack format.
+See https://gml.noaa.gov/ccgg/obspack/ for details.
+Surface pfp event data are available in NetCDF and ASCII text.
+
++++++++++++++++++++++++++++++++
+Parameter-specific notes:
+
+
+--------------------------------------------------------------------
+6. INTRODUCTION
+
+CO2 dry air mole fractions reported in these files were measured by a
+nondispersive infrared absorption analyzer or cavity ring-down spectrometer
+(since Aug., 2019) in air samples collected in glass flasks at NOAA GML Carbon
+Cycle Cooperative Global Air Sampling Network sites. Measurements are reported
+on the X2019 CO2 mole fraction scale. Calibration procedures are given in Komhyr
+et al., 1983; Komhyr et al., 1985; Thoning et al., 1987, and Thoning et al.,
+1995; and Tans et al.,2017. Analysis and interpretation of the data have been
+reported by Komhyr et al., 1985; Conway et al., 1988; Tans et al., 1989a; Tans
+et al., 1990, and Conway et al., 1994.
+
+
+-------------------------------------------------------------------
+7. DATA - GENERAL COMMENTS
+
+Carbon dioxide (CO2) in ambient and standard air samples is detected using a
+non-dispersive infrared (NDIR) analyzer. The measurement of CO2 in air is made
+relative to standards whose CO2 mole fraction is determined with high precision
+and accuracy. Because detector response is non-linear in the range of
+atmospheric levels, ambient samples are bracketed during analysis by a set of
+standards used to calibrate detector response. Measurements are reported in
+units of micromol/mol (10^-6 mol CO2 per mol of dry air or parts per million
+(ppm)).
+
+In August, 2019, we switched from a NDIR to a Cavity Ring-Down Spectrometer that
+analyzes CH4 and CO2. The analyzer is calibrated off-line with a suite of
+standards once per month relative to a dry, natural air, reference in a
+high-pressure cylinder.  All air samples are measured relative the same
+reference, and CH4 and CO2 values in measured samples are calculated based on
+their ratio to the reference.  Repeatability of the analyzer, based on repeated
+analysis of air from a high-pressure cylinder, is ~0.02 ppm (1 sigma).
+
+Measurements are directly traceable to the WMO X2019 CO2 in air mole fraction
+scale.
+
+
+Air samples are collected in programmable flask packages (PFP) using
+programmable compressor packages (PCP). The PCP contains battery-powered pumps
+for flushing and pressuring the flasks. The PFP contains twelve 0.7L cylindrical
+borosilicate glass flasks with glass valves on each end sealed with Teflon
+O-rings, a stainless-steel manifold on each side of the flasks, and a data
+logging and control system. 
+
+-------------------------------------------------------------------
+7.1 DATA - SAMPLING LOCATIONS
+
+For a summary of sampling locations, please visit
+
+<A HREF='https://gml.noaa.gov/dv/site/?program=ccgg'>https://gml.noaa.gov/dv/site/?program=ccgg</A>.
+
+Note: Data for all species may not be available for all sites listed 
+in the table.
+
+To view near real-time data, manipulate and compare data, and create
+custom graphs, please visit
+
+<A HREF='https://gml.noaa.gov/dv/iadv/'>https://gml.noaa.gov/dv/iadv/</A>.
+
+-------------------------------------------------------------------
+7.2 DATA - FILE NAME DESCRIPTION
+
+Encoded into each file name are the parameter (trace gas identifier); sampling 
+site; sampling project; laboratory ID number; measurement group (optional); and optional 
+qualifiers that further define the file contents.
+
+All file names use the following naming scheme:
+
+         1      2         3               4                   5            
+[parameter]_[site]_[project]_[lab ID number]_[optional measurement group]_[optional 
+
+         6           7
+qualifiers].[file type]
+
+
+1. [parameter]
+
+   Identifies the measured parameter or trace gas species.
+
+   (ex)
+   co2      Carbon dioxide
+   ch4      Methane
+   co2c13   d13C (co2)
+   merge    more than one parameter
+
+2. [site]
+
+   Identifies the sampling site code.
+
+   (ex)
+   brw
+   pocn30
+   car
+   amt
+
+3. [project]
+   
+   Identifies sampling platform and strategy.
+
+   (ex)
+   surface-flask
+   surface-pfp
+   surface-insitu
+   aircraft-pfp
+   aircraft-insitu
+   tower-insitu
+
+4. [lab ID number]
+
+   A numeric field that identifies the sampling laboratory (1,2,3, ...).
+   NOAA GML is lab number 1 (see https://gml.noaa.gov/ccgg/obspack/labinfo.html).
+
+5. [optional measurement group]
+
+  Identifies the group within the NOAA GML or the Institute of Arctic and Alpine
+  Research (INSTAAR) at the University of Colorado Boulder that made the
+  measurement.
+  It is possible to have multiple different groups measuring some of the same
+  trace gas species in our discrete samples.  
+
+  Measurement groups within NOAA and INSTAAR are 
+
+  ccgg:  NOAA Carbon Cycle Greenhouse Gases group (CCGG)
+  hats:  NOAA Halocarbons and other Atmospheric Trace Species group (HATS)
+  arl:   INSTAAR Atmospheric Research Laboratory (ARL)
+  sil:   INSTAAR Stable Isotope Laboratory (SIL)
+  curl:  INSTAAR Laboratory for Radiocarbon Preparation and Research (CURL)
+
+
+6. [optional qualifiers]
+
+   Optional qualifier(s) may indicate data subsetting or averaging.
+   Multiple qualifiers are delimited by an underscore (_).  A more detailed
+   description of the file contents is included within each data file.
+
+   (ex)
+   event         All measurement results for all collected samples (discrete (flask) data only).
+   month         Computed monthly averages all collected samples (discrete (flask) data only).
+   hour_####     Computed hourly averages for the specified 4-digit year (quasi-continuous data only)
+   HourlyData    Computed hourly averages for entire record (quasi-continuous data only)
+   DailyData     Computed daily averages for entire record (quasi-continuous data only)
+   MonthlyData   Computed monthly averages for entire record (quasi-continuous data only)
+
+7. [file type]
+   
+   File format (netCDF, ASCII text). 
+
+   (ex) 
+
+   txt           ASCII text file
+   nc            netCDF4 file
+
+-------------------------------------------------------------------
+7.3 DATA - FILE TYPES
+
+We now provide some NOAA Global Monitoring Laboratory measurements
+in two unique file formats; netCDF and ASCII text. 
+
+The Network Common Data Form (NetCDF) is a self-describing, machine-independent
+data format that supports creation, access, and sharing of array-oriented
+scientific data.  To learn more about netCDF and how to read netCDF
+files, please visit http://www.unidata.ucar.edu. 
+
+The ASCII text (technically UTF-8 encoded) file is derived directly from the 
+netCDF file.  The text file is also self-describing and can be viewed using 
+any ASCII or UTF-8 capable text editor.  "Self-describing" means the file 
+includes enough information about the included data (called metadata) 
+that no additional file is required to understand the structure of the data 
+and how to read and use the data.  Note that some non-ASCII characters (accents,
+international character sets) may be present in various names and contact 
+information.  These may require a UTF-8 capable text editor to view properly.
+
+-------------------------------------------------------------------
+7.4 DATA - CONTENT
+
+See individual files for description of the provided variables and other 
+dataset metadata.
+
+-------------------------------------------------------------------
+7.5 QC FLAGS
+
+NOAA GML uses a 3-column quality control flag where each column
+is defined as follows:
+
+column 1    REJECTION flag.  An alphanumeric other
+            than a period (.) in the FIRST column indicates
+            a sample with obvious problems during collection
+            or analysis.  This measurement should not be interpreted.
+
+column 2    SELECTION flag.  An alphanumeric other than a
+            period (.) in the SECOND column indicates a sample
+            that is likely valid but does not meet selection
+            criteria determined by the goals of a particular
+            investigation.
+
+column 3    INFORMATION flag.  An alphanumeric other than a period (.) 
+            in the THIRD column provides additional information 
+            about the collection or analysis of the sample.
+
+            WARNING: A "P" in the 3rd column of the QC flag indicates
+            the measurement result is preliminary and has not yet been 
+            carefully examined by the PI.  The "P" flag is removed once 
+            the quality of the measurement has been assessed.
+
+
+-------------------------------------------------------------------
+7.6 COLLECTION METHODS
+
+A single-character code is used to identify the sample collection method.
+The codes are:
+    A - The automated or manual filling of a whole air sample using the
+Programmable Flask Package (PFP) and Programmable Compressor Package (PCP)air
+sampling devices. The air sample is contained in a 0.7 liter borosilicate
+glass container (flask) fitted with two Glass Expansion high vacuum glass
+piston valves sealed with PTFE O-rings. The flasks are typically flushed with
+10 liters (aircraft samples) or 75 liters (tower samples) of ambient air and
+then pressurized to 40 psia. Air is delivered through an intake tube using
+two diaphragm pumps connected in series and controlled with a microprocessor.
+The flow rate is approximately 15 L/min at sea level.  See Sweeney et al.
+2015 and Andrews et al. 2014 for more details.
+    C - Air samples are collected as with method 'A', but the sample air is
+dried before sample collection. Flasks are not pre-filled with ambient air
+before flushing and collecting  the air sample.
+    I - Air is sampled from a 15L spherical stainless steel mixing volume
+after being filled with ambient air that was pulled through an M&C Techgroup
+Model ECP 20-2 gas chiller using an integrating compressor and mass flow
+controller. The two stainless steel dryer traps are plumbed in series, held
+at approximately 5 degrees C and the condensed water is removed with a
+peristaltic pump. Prior to sample collection, an additional glass
+conditioning step known as "prefilling" occurs where the glass containers are
+flushed and filled with ambient air and then vented and flushed immediately
+before air sample collection. This is a glass conditioning step that
+addresses glass wall effects of the gases of interest.  After 'prefilling',
+the integration starts with a high flow rate of 3.8 SLM and decreases over
+time to 0.29 SLM over 1 hour. The resulting one hour time averaged ambient
+air sample is compressed into a 0.75 liter borosilicate glass container
+(flask) fitted with 2 Glass Expansion high vacuum glass valves and PTFE
+O-rings. The flask is typically filled to 40 psia. (See Turnbull, J.C.,
+Guenther, D., Karion, A., Sweeney, C., Anderson, E., Andrews, A.E., Kofler,
+J., Miles, N.L., Newberger, T., Richardson, S.J., Tans, P.P., 2012. An
+integrated flask sample collection system for greenhouse gas measurements.
+Atmos. Meas. Tech. 5, 2321-2327.)
+    B - Air samples are collected as with method 'R', but with an additional
+drying step  using one of several techniques. In one method, e.g. site=ACT,
+air samples were dried with a two-stage chiller cooled to 5 degrees C; those
+taken below 3000 m MSL were also pressurized to 40 psia to further facilitate
+air sample drying (Baier et al. 2019). At tower sampling sites, M&C chillers
+with temperatures set to approximately 3 degrees C and sub-ambient pressure
+due to high flow are used (Andrew et al. 2014). At CRV tower, a two-stage
+chiller set to -26 degrees C is used. 
+    R - Air samples are collected as with method 'A', but with an additional
+glass conditioning step known as "prefilling". During prefilling,  the glass
+containers are flushed and filled with ambient air and then vented and
+flushed immediately before air sample collection. This is a glass
+conditioning step that addresses glass wall effects of the gasses of interest
+(Andrews et al. 2014).
+    X - Testing method for pfp drying experiments. CP-> chiller pressurized
+
+
+
+-------------------------------------------------------------------
+8. DATA RETRIEVAL
+
+All (ASCII text and netCDF) files are located in 
+"https://gml.noaa.gov/aftp/data/trace_gases/co2/pfp/surface/".
+
+To transfer all files in a directory, it is more efficient to 
+download the tar or zipped files. Individual or zipped files can
+be downloaded using your web browser by clicking the hyperlinked file
+or right clicking hyperlink and using browser menu to 'save as' or similar.
+
+Files can also be accessed by anonymous ftp at aftp.cmdl.noaa.gov. 
+
+-------------------------------------------------------------------
+9. REFERENCES
+
+Tans, P.P. et al., Carbon Cycle (Group Report), Climate Monitoring
+  and Diagnostics Laboratory, No. 23, Summary Report 1994-1995,
+  Hoffman, D.J., J.T. Peterson and R.M. Rosson, eds, US Department
+  of Commerce, Boulder, Colorado, 1996.
+
+------------------------------------------------------------------- 
+</PRE>
+</BODY>
+</HTML>
