@@ -69,8 +69,8 @@ with open('mauna-loa-data/flask_monthly.md', 'w', encoding='utf-8') as md_file:
     md_file.write(df_extracted.to_markdown(index=False))
 
 # Extract data from JSON file
-path = 'mauna-loa-data/flask_monthly.json'
-data = pd.read_json(path)
+PATH = 'mauna-loa-data/flask_monthly.json'
+data = pd.read_json(PATH)
 
 # Create datetime data
 
