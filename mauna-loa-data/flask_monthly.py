@@ -65,7 +65,7 @@ df_extracted.dropna().to_json('mauna-loa-data/flask_monthly_no_nan.json',
                               orient='records', date_format='iso')
 
 # Convert to Markdown and save it
-with open('mauna-loa-data/flask_monthly.md', 'w') as md_file:
+with open('mauna-loa-data/flask_monthly.md', 'w', encoding='utf-8') as md_file:
     md_file.write(df_extracted.to_markdown(index=False))
 
 # Extract data from JSON file
