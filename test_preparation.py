@@ -8,6 +8,7 @@ unit test for padding and unpadding the data
 from datetime import datetime, timedelta
 import numpy as np
 import pandas as pd
+import json
 import matplotlib.pyplot as plt
 from preparation import pad_time_series
 from preparation import unpad_time_series
