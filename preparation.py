@@ -39,14 +39,3 @@ def remove_noise(data, low_freq=None, high_freq=None):
 # Example usage
 # Remove high and low frequency noise
 filtered_data = remove_noise(data, low_freq=0.001, high_freq=0.05)
-
-# Plot to visualize the difference (requires matplotlib)
-    import matplotlib.pyplot as plt
-    plt.figure(figsize=(10, 6))
-    plt.plot(data.index, data, label='Original Data')
-    plt.plot(filtered_data.index, filtered_data, label='Filtered Data', linestyle='--')
-    plt.legend()
-    plt.title("CO2 Concentration - Original vs. Filtered")
-    plt.xlabel("Date")
-    plt.ylabel("CO2 Concentration (ppm)")
-    plt.show()
