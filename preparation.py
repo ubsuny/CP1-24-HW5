@@ -33,7 +33,7 @@ def pad_time_series(series, target_length, padding_value=None):
         padding_value = series.mean()  # You could also use median or any other method
 
     # Create a padding Series
-    padding_index = pd.date_range(start=series.index[-1] + pd.Timedelta(days=1), 
+    padding_index = pd.date_range(start=series.index[-1] + pd.Timedelta(days=1),
                                periods=padding_length, freq='D')
     padding_series = pd.Series(padding_value, index=padding_index)
 
@@ -58,4 +58,4 @@ def unpad_time_series(padded_series, original_length):
         The unpadded time series.
     """
     # Return the original length of the series
-    return padded_series.iloc[:original_length]  
+    return padded_series.iloc[:original_length]
