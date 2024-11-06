@@ -2,13 +2,15 @@
 test_preparation.py
 
 unit test for the functions fft, calc_freq, inv_fft
-
+unit test for padding and unpadding the data
 """
 
 from datetime import datetime, timedelta
 import numpy as np
 import pandas as pd
-
+import matplotlib.pyplot as plt
+from preparation import pad_time_series
+from preparation import unpad_time_series
 from preparation import fft_powerspectrum, fft_mag, get_timeseries
 
 #from thid import plot_rets
@@ -87,12 +89,6 @@ print(data1.index[0].timestamp())
 
 print(data1.iloc[2] * 1)
 
-"""
-This module does unit test for padding and unpadding the data
-"""
-import matplotlib.pyplot as plt
-from preparation import pad_time_series
-from preparation import unpad_time_series
 
 # Function to read the JSON file and return a time series with CO2/ concentration
 
