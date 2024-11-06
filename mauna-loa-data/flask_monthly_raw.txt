@@ -50,25 +50,8 @@
 # comment:
 # comment: Please refer to the species-specific README file in the
 # comment: appropriate directory folder at https://gml.noaa.gov/aftp/data/trace_gases/.
-# comment:
+# comment: discarded data until 1976
 site year month value
-MLO 1969  8   322.51
-MLO 1969  9   321.36
-MLO 1969 10   320.74
-MLO 1969 11   321.98
-MLO 1969 12   323.78
-MLO 1970  1   325.13
-MLO 1970  2   325.55
-MLO 1970  3   325.67
-MLO 1970  4   326.58
-MLO 1970  5   327.69
-MLO 1970  6   327.30
-MLO 1970  7   326.12
-MLO 1970  8   324.91
-MLO 1970  9   322.99
-MLO 1970 10   322.64
-MLO 1970 11   324.03
-MLO 1970 12   325.54
 MLO 1976  7   332.29
 MLO 1976  8   331.04
 MLO 1976  9   329.67
