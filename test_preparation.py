@@ -1,7 +1,6 @@
 """
 This module does unit test for padding and unpadding the data
 """
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 # Function to read the JSON file and return a time series with CO2/ concentration
@@ -17,7 +16,8 @@ if __name__ == "__main__":
     # Sample time series
     # Create a datetime index using the Year and Month
     dates = pd.to_datetime(x_['Year'].astype(str) + '-' + x_['Month'].astype(str), format='%Y-%m')
-    ts = pd.Series(x_['CO2 (ppm)'].values, index=dates) # Use values for the data to avoid alignment issues
+    ts = pd.Series(x_['CO2 (ppm)'].values, index=dates) 
+    # Use values for the data to avoid alignment issues
 
     print("Original Time Series:")
     print(ts)
