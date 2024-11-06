@@ -2,7 +2,6 @@
 This module does padding and unpadding the data
 """
 import pandas as pd
-import numpy as np
 
 def pad_time_series(series, target_length, padding_value=None):
     """
@@ -35,7 +34,7 @@ def pad_time_series(series, target_length, padding_value=None):
 
     # Create a padding Series
     padding_index = pd.date_range(start=series.index[-1] + pd.Timedelta(days=1), 
-                                   periods=padding_length, freq='D')
+                               periods=padding_length, freq='D')
     padding_series = pd.Series(padding_value, index=padding_index)
 
     # Concatenate the original series with the padding
@@ -60,4 +59,3 @@ def unpad_time_series(padded_series, original_length):
     """
     # Return the original length of the series
     return padded_series.iloc[:original_length]  
-        
