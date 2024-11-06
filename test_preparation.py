@@ -3,8 +3,8 @@ This module does unit test for padding and unpadding the data
 """
 import pandas as pd
 import matplotlib.pyplot as plt
-from preparation.py import pad_time_series
-from preparation.py import unpad_time_series
+from preparation import pad_time_series
+from preparation import unpad_time_series
 
 # Function to read the JSON file and return a time series with CO2/ concentration
 
