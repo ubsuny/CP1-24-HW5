@@ -4,6 +4,7 @@ preparation.py
 fft
 inverse fft
 calculate frequencies
+padding and unpadding the data
 """
 
 import numpy as np
@@ -58,10 +59,6 @@ def get_timeseries(path):
 
 
     return co2_series
-
-"""
-This module does padding and unpadding the data
-"""
 
 def pad_time_series(series, target_length, padding_value=None):
     """
