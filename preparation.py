@@ -84,6 +84,10 @@ def get_timeseries(path, datecolumn = 'date', datacolumn = 'CO2 (ppm)'):
 
     #Extracts data from the json file at the input path
     data = pd.read_json(path)
+
+    # Convert JSON to a DataFrame
+    df = pd.DataFrame(data)
+
     #Uses the month and year information from the json file,
     # assumes data was taken on the first of each month,
     # creates new column with datetime
