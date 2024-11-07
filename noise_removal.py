@@ -43,5 +43,5 @@ if __name__ == "__main__":
     data_values = np.sin(2 * np.pi * 0.01 * np.arange(100)) + 0.5 * np.random.randn(100)
     data = pd.Series(data_values, index=date_range)
     
-# Remove high and low frequency noise
-filtered_data = remove_noise(data, low_freq=0.001, high_freq=0.05)
+    # Remove high and low frequency noise
+    filtered_data = remove_noise(data, low_freq=0.001, high_freq=0.05)
