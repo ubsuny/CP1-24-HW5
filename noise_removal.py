@@ -37,5 +37,11 @@ def remove_noise(data, low_freq=None, high_freq=None):
     return pd.Series(filtered_data.real, index=data.index)
 
 # Example usage
+if __name__ == "__main__":
+    # Generate example time-series data
+    date_range = pd.date_range(start="2020-01-01", periods=100, freq="D")
+    data_values = np.sin(2 * np.pi * 0.01 * np.arange(100)) + 0.5 * np.random.randn(100)
+    data = pd.Series(data_values, index=date_range)
+    
 # Remove high and low frequency noise
 filtered_data = remove_noise(data, low_freq=0.001, high_freq=0.05)
