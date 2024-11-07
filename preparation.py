@@ -59,23 +59,29 @@ def get_timeseries(path):
 
     return co2_series
 
-#These constants are used for the blackman_window function
+
 A0=.42
 A1=.5
 A2=.08
 
-hann_window=lambda N, n: np.sin(np.pi*n/N)**2
-"""
-This acts as the hann window function
-"""
-blackman_window=lambda N, n:A0-A1*np.cos(np.pi*2*n/N)+A2*np.cos(4*np.pi*n/N)
-"""
-This acts as the blackman_window function
-"""
-welch_window= lambda N, n: 1-((n-N/2)/(N/2))**2
-"""
-This acts as the welch window function
-"""
+def hann_window(big_n,n):
+    """
+    This acts as the hann window function
+    """
+    return np.sin(np.pi*n/big_n)**2
+
+def blackman_window(big_n,n):
+    """
+    This acts as the blackman_window function
+    """
+    return A0-A1*np.cos(np.pi*2*n/big_n)+A2*np.cos(4*np.pi*n/big_n)
+
+def welch_window(big_n,n):
+    """
+    This acts as the welch window function
+    """
+    return 1-((n-big_n/2)/(big_n/2))**2
+
 
 def window(data, start, end):
     """
@@ -87,7 +93,7 @@ def window(data, start, end):
     """
     tdata=data.index
     ydata=data.values
-    N=end-start+1
+    big_n=end-start
     windowed=[]
     time_windowed=[]
 
@@ -95,20 +101,19 @@ def window(data, start, end):
     #the window function to each index of the data within
     #the range
     for i in range(start,end+1):
-        windowed.append(hann_window(N,i)*ydata[i])
+        windowed.append(round(hann_window(big_n,i-start)*ydata[i],9))
         time_windowed.append(tdata[i])
-
     hann=pd.Series(windowed,index=time_windowed)
     windowed=[]
 
     for i in range(start,end+1):
-        windowed.append(blackman_window(N,i)*ydata[i])
+        windowed.append(round(blackman_window(big_n,i-start)*ydata[i],9))
 
     black=pd.Series(windowed, index=time_windowed)
 
     windowed=[]
     for i in range(start,end+1):
-        windowed.append(welch_window(N,i)*ydata[i])
+        windowed.append(welch_window(big_n,i-start)*ydata[i])
     
     welch=pd.Series(windowed,index=time_windowed)
 
@@ -121,10 +126,10 @@ def unwindow(data, type):
     undos that window function.
     """
     ydata=data.values
-    tdata=data.time
+    tdata=data.index
     unwindowed=[]
     time_unwindowed=[]
-    N=len(ydata)
+    big_n=len(ydata)-1
     
     #Because the window function makes the start and 
     #end points of the original data zero, that info
@@ -132,15 +137,17 @@ def unwindow(data, type):
     #excluded from the unwindow process.
     if type=="Hann Window":
         for i in range(1,len(ydata)-1):
-            unwindowed.append(ydata[i]*1/hann_window(N,i))
+            unwindowed.append(ydata[i]*1/hann_window(big_n,i))
+            print(ydata[i]/hann_window(big_n,i))
             time_unwindowed.append(tdata[i])
     if type=="Blackman Window":
         for i in range(1, len(ydata)-1):
-            unwindowed.append(ydata[i]*1/blackman_window(N,i))
+            unwindowed.append(ydata[i]*1/blackman_window(big_n,i))
             time_unwindowed.append(tdata[i])
     if type=="Welch Window":
         for i in range(1, len(ydata)-1):
-            unwindowed.append(ydata[i]*1/welch_window(N,i))
+            unwindowed.append(ydata[i]*1/welch_window(big_n,i))
             time_unwindowed.append(tdata[i])
-            
+
     return pd.Series(unwindowed, index=time_unwindowed)
+
