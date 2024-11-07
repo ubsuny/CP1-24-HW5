@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 
 from preparation import fft_powerspectrum, fft_mag, get_timeseries
-
+from preparation import window,unwindow
 #from thid import plot_rets
 
 """
@@ -86,3 +86,65 @@ print(data1.index[0].timestamp())
 
 
 print(data1.iloc[2] * 1)
+
+
+
+
+def test_window():
+    """
+    test_window tests whether or not the start
+    and end point of the windowed data are zero
+    for each window function.
+    """
+    #Test data is made from a sin wave
+    x=np.linspace(0,2*np.pi,100)
+    start=24
+    end=75
+    func=[np.sin(i) for i in x]
+    data=pd.Series(func,index=x)
+
+    #the test data is windowed and the 
+    #endpoints are checked.
+    windows=window(data, start,end)
+    ydata=windows["Hann Window"].values
+    assert ydata[0]==0
+    assert ydata[len(ydata)-1]==0
+    ydata=windows["Blackman Window"].values
+    assert ydata[0]==0
+    assert ydata[len(ydata)-1]==0
+    ydata=windows["Welch Window"].values
+    assert ydata[0]==0
+    assert ydata[len(ydata)-1]==0
+
+def test_unwindow():
+    """
+    test_unwindow ensures that the unwindow function
+    reverses the window function. Does this for
+    each window function.
+    """
+    x=np.linspace(0,2*np.pi,100)
+    start=24
+    end=75
+    func=[np.sin(i) for i in x]
+    data=pd.Series(func,index=x)
+    windows=window(data, start,end)
+    new=unwindow(windows["Hann Window"],"Hann Window")
+    count=0
+    test_func=func[start+1:end]
+    for i in test_func:
+        #Rounding to the third decimal place is necessary
+        #to get this to work.
+        assert round(i,3)==round(new.values[count],3)
+        count+=1
+    
+    new=unwindow(windows["Blackman Window"],"Blackman Window")
+    count=0
+    for i in test_func:
+        assert round(i,3)==round(new.values[count],3)
+        count+=1
+    
+    new=unwindow(windows["Welch Window"],"Welch Window")
+    count=0
+    for i in test_func:
+        assert round(i,3)==round(new.values[count],3)
+        count+=1
