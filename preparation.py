@@ -59,7 +59,7 @@ def calc_freq(data, tim):
         diftim = diftim/(60*60*24*30.4375)
     return np.fft.fftfreq(n, d = diftim)
 
-def get_timeseries(path):
+def get_timeseries(path, datecolumn = 'date'):
     '''
     This function reads json files from the data collection task 
     and returns a pandas time series with datetime as index and 
@@ -76,6 +76,7 @@ def get_timeseries(path):
 
     Parameters:
     - path: Stringlike. path/to/json/file.json
+    - datecolumn: to specifiy specific date column name
 
     Returns:
     - Pandas Time Series. Index = Datetime, Data = CO2/Methane Concentration
@@ -86,13 +87,15 @@ def get_timeseries(path):
     #Uses the month and year information from the json file,
     # assumes data was taken on the first of each month,
     # creates new column with datetime
-    data['date'] = pd.to_datetime(data[['Year', 'Month']].assign(Day=1))
+    
+    if datecolumn == "date": 
+        data['date'] = pd.to_datetime(data[['Year', 'Month']].assign(Day=1))
 
     #Sets datetime as index
-    data.set_index('date', inplace=True)
+    data.set_index(datecolumn, inplace=True)
 
     #Creates timeseries with co2 (ppm) as data and datetime as index
-    co2_series = data['CO2 (ppm)']
+    co2_series = data[datacolumn]
 
 
     return co2_series
