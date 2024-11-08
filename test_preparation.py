@@ -1,6 +1,5 @@
 """
 test_preparation.py
-
 unit test for the functions fft_powerspectrum, fft_mag, inv_fft, calc_freq
 
 """
@@ -18,7 +17,7 @@ def test_fft_powerspectrum(data):
     assert len(powrspec) == len(data)/2
     assert isinstance(powrspec, np.ndarray)
 
-def test_fft_mag(tdata):
+def test_fft_mag(data):
     """test the fft_mag length and type of export"""
     magnitudes = fft_mag(data)
     assert len(magnitudes) == len(data)
