@@ -18,7 +18,7 @@ def fft_powerspectrum(data):
     the powerspectrum"""
     n = len(data)
     timestamp_sum = sum(data.index[i+1].timestamp() - data.index[i].timestamp() for i in range(n-1))
-    if not timestamp_sum/(n-1) == data.index[2].timestamp() - data.index[1].timestamp():
+    if not np.isclose(timestamp_sum/(n-1), data.index[2].timestamp() - data.index[1].timestamp(), atol=1e-6):
         print("Data is not evenly spaced or data points are missing")
         return None
     matrx = np.fft.fft(data.values)
@@ -49,7 +49,7 @@ def calc_freq(data, tim):
     n = len(data)
     timestamp_sum = sum(data.index[i+1].timestamp() - data.index[i].timestamp() for i in range(n-1))
     diftim = data.index[2].timestamp() - data.index[1].timestamp()
-    if not timestamp_sum/(n-1) == diftim:
+    if not np.isclose(timestamp_sum/(n-1), diftim, atol=1e-6):
         print("Data is not evenly spaced or data points are missing")
         return None
     if tim.strip().lower() == 'day':
@@ -97,7 +97,7 @@ def get_timeseries(path):
     return co2_series
 
 
-def find_peak_frequencies(data, tim = " second "):
+def find_peak_frequencies(data, tim="second"):
     """
     Finds the frequencies of the peaks in the power spectrum of the data.
     Parameters:
