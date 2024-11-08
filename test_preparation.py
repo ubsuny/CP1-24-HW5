@@ -20,7 +20,7 @@ if __name__ == "__main__":
     # Sample time series
     # Create a datetime index using the Year and Month
     dates = pd.to_datetime(x_['Year'].astype(str) + '-' + x_['Month'].astype(str), format='%Y-%m')
-    ts = pd.Series(x_['CO2 (ppm)'].values, index=dates) 
+    ts = pd.Series(x_['CO2 (ppm)'].values, index=dates)
     # Use values for the data to avoid alignment issues
 
     print("Original Time Series:")
