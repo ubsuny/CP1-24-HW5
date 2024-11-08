@@ -6,8 +6,8 @@ unit test for the functions fft_powerspectrum, fft_mag, inv_fft, calc_freq
 from datetime import datetime, timedelta
 import numpy as np
 import pandas as pd
-from preparation import fft_powerspectrum, fft_mag, inv_fft, calc_freq
 import pytest
+from preparation import fft_powerspectrum, fft_mag, inv_fft, calc_freq
 
 @pytest.fixture(name="data")
 def setup_data():
