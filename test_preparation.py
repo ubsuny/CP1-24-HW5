@@ -3,15 +3,13 @@
 This module does unit test for padding and unpadding the data
 """
 import pandas as pd
+import json
 import matplotlib.pyplot as plt
 from preparation import pad_time_series
 from preparation import unpad_time_series
 
-# Function to read the JSON file and return a time series with CO2/ concentration
-
-with open('mauna-loa-data/flask_monthly.json', 'r') as file:
-    data = json.load(file)
-data = pd.read_json('flask_monthly.json')
+# load the JSON file using pandas:
+data = pd.read_json('mauna-loa-data/flask_monthly.json', encoding='utf-8')
 
 plt.scatter(data['Month'], data['CO2 (ppm)'])
 
