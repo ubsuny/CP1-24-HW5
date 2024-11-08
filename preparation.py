@@ -59,7 +59,7 @@ def calc_freq(data, tim):
         diftim = diftim/(60*60*24*30.4375)
     return np.fft.fftfreq(n, d = diftim)
 
-def get_timeseries(path, datecolumn = 'date'):
+def get_timeseries(path, datecolumn = 'date', datacolumn = 'CO2 (ppm)'):
     '''
     This function reads json files from the data collection task 
     and returns a pandas time series with datetime as index and 
