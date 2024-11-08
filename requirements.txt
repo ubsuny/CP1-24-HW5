@@ -1,6 +1,5 @@
 pylint
 pytest
 numpy
-scipy
 pandas
 matplotlib
