@@ -11,7 +11,6 @@ from preparation import fft_powerspectrum, fft_mag, get_timeseries
 from preparation import window,unwindow
 #from thid import plot_rets
 
-"""
 t = np.linspace(0, 2, 2000, endpoint=False)
 f1, f2 = 50, 120
 data = pd.Series(np.sin(f1*t)+0.5*np.sin(f2*t),index=range(0,len(t)))
@@ -21,7 +20,7 @@ print(freq)
 print(inv_fft(data))
 print(data)
 plot_rets(freq,fft(data))
-"""
+
 
 t = np.linspace(0, 2, 2000, endpoint=False)
 f1, f2 = 50, 120
@@ -30,9 +29,8 @@ data = pd.Series(np.sin(2*np.pi*f1*t)+0.5*np.sin(2*np.pi*f2*t),index=range(0,len
 #trange = date_range(datetime.now(), datetime.now()+pd.timedelta(days=9),freq='d')
 #trange[i].timestamp()
 
-"""
-def test_fft(data):
 
+def test_fft(data):
     magnitudes = fft(data)
 from preparation import fft_powerspectrum, fft_mag, inv_fft, calc_freq
 import pytest
@@ -79,7 +77,6 @@ print(data1.index[0].timestamp())
 
 
 print(data1.iloc[2] * 1)
-'"""
 
 
 
