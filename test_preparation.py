@@ -3,7 +3,6 @@
 This module does unit test for padding and unpadding the data
 """
 import pandas as pd
-import json
 import matplotlib.pyplot as plt
 from preparation import pad_time_series
 from preparation import unpad_time_series
