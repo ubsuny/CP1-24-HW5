@@ -10,6 +10,7 @@ calculate frequencies
 
 import numpy as np
 import pandas as pd
+from scipy.signal import find_peaks
 
 
 def fft_powerspectrum(data):
@@ -94,3 +95,27 @@ def get_timeseries(path):
 
 
     return co2_series
+
+
+def find_peak_frequencies(data, tim = " second "):
+    """
+    Finds the frequencies of the peaks in the power spectrum of the data.
+    Parameters:
+        Inputs:
+            data: A time series with timestamps as the index and amplitude values as the data.
+            tim: A string specifying the time unit in which you want the frequencies,
+                 e.g., "second," "day," or "month."
+        Outputs:
+            frequencies, an array of frequency values
+            (in Hz by default, or in days or months if specified)
+            corresponding to each FFT component.
+    """
+    power_spectrum = fft_powerspectrum(data)
+    if power_spectrum is None:
+        return None
+    frequencies = calc_freq(data, tim)
+    threshold = np.median(power_spectrum)
+    # Adjust the threshold based on data characteristics
+    peaks, _ = find_peaks(power_spectrum, height = threshold)
+    peak_frequencies = frequencies[peaks]
+    return peak_frequencies
