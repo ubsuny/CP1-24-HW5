@@ -3,7 +3,6 @@
 This module does padding and unpadding the data
 """
 import pandas as pd
-import numpy as np
 
 def pad_time_series(series, target_length, padding_value=None):
     """
