@@ -61,9 +61,6 @@ def unpad_time_series(padded_series, original_length):
     # Return the original length of the series
     return padded_series.iloc[:original_length]
   
-preparation.py
-
-this code creates the functions needed to run the
 fft, invs ffft and to calculate the frequencies
 fft
 inverse fft
