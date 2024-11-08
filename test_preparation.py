@@ -9,6 +9,8 @@ from preparation import unpad_time_series
 
 # Function to read the JSON file and return a time series with CO2/ concentration
 
+with open('mauna-loa-data/flask_monthly.json', 'r') as file:
+    data = json.load(file)
 data = pd.read_json('flask_monthly.json')
 
 plt.scatter(data['Month'], data['CO2 (ppm)'])
