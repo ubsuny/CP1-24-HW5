@@ -119,7 +119,7 @@ def welch_window(big_n,n):
     return 1-((n-big_n/2)/(big_n/2))**2
 
 
-def window(data, start, end):
+def window(my_data, start, end):
     """
     the window function takes in a pandas timeseries,
     a start index, and an end index defining the range
@@ -127,8 +127,8 @@ def window(data, start, end):
     being the name of the window function applied and 
     then a new timeseries for each window function
     """
-    tdata=data.index
-    ydata=data.values
+    tdata=my_data.index
+    ydata=my_data.values
     big_n=end-start
     windowed=[]
     time_windowed=[]
@@ -155,14 +155,14 @@ def window(data, start, end):
 
     return {"Hann Window": hann, "Blackman Window":black, "Welch Window":welch}
 
-def unwindow(data, type):
+def unwindow(my_data, w_type):
     """
     unwindow takes in a pandas time series and a string
     defining the type of window function to undo. It then
     undos that window function.
     """
-    ydata=data.values
-    tdata=data.index
+    ydata=my_data.values
+    tdata=my_data.index
     unwindowed=[]
     time_unwindowed=[]
     big_n=len(ydata)-1
@@ -171,16 +171,16 @@ def unwindow(data, type):
     #end points of the original data zero, that info
     #is lost. With this, the start and end points are
     #excluded from the unwindow process.
-    if type=="Hann Window":
+    if w_type=="Hann Window":
         for i in range(1,len(ydata)-1):
             unwindowed.append(ydata[i]*1/hann_window(big_n,i))
             print(ydata[i]/hann_window(big_n,i))
             time_unwindowed.append(tdata[i])
-    if type=="Blackman Window":
+    if w_type=="Blackman Window":
         for i in range(1, len(ydata)-1):
             unwindowed.append(ydata[i]*1/blackman_window(big_n,i))
             time_unwindowed.append(tdata[i])
-    if type=="Welch Window":
+    if w_type=="Welch Window":
         for i in range(1, len(ydata)-1):
             unwindowed.append(ydata[i]*1/welch_window(big_n,i))
             time_unwindowed.append(tdata[i])

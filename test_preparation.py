@@ -1,27 +1,27 @@
 """
 test_preparation.py
 unit test for the functions fft_powerspectrum, fft_mag, inv_fft, calc_freq
-
 """
-from datetime import datetime, timedelta
 import numpy as np
 import pandas as pd
-
-from preparation import fft_powerspectrum, fft_mag, get_timeseries
 from preparation import window,unwindow
-#from thid import plot_rets
 
+#from datetime import datetime, timedelta
+#from preparation import fft_powerspectrum, fft_mag, get_timeseries
+
+
+#from thid import plot_rets
+"""
 t = np.linspace(0, 2, 2000, endpoint=False)
 f1, f2 = 50, 120
 data = pd.Series(np.sin(f1*t)+0.5*np.sin(f2*t),index=range(0,len(t)))
 # index_values = data.index.tolist()
-"""
 freq = calc_freq(data)
 print(freq)
 print(inv_fft(data))
 print(data)
 plot_rets(freq,fft(data))
-"""
+
 
 t = np.linspace(0, 2, 2000, endpoint=False)
 f1, f2 = 50, 120
@@ -30,19 +30,19 @@ data = pd.Series(np.sin(2*np.pi*f1*t)+0.5*np.sin(2*np.pi*f2*t),index=range(0,len
 #trange = date_range(datetime.now(), datetime.now()+pd.timedelta(days=9),freq='d')
 #trange[i].timestamp()
 
-"""
+
 def test_fft(data):
     magnitudes = fft(data)
 from preparation import fft_powerspectrum, fft_mag, inv_fft, calc_freq
 import pytest
-"""
-"""
+
 @pytest.fixture
-"""
+
+
 def data():
     trange = pd.date_range(datetime.now(), datetime.now() + timedelta(days=9), freq='d')
     return pd.Series([1, 2, 3, 2, 1, 2, 3, 2, 1, 2], index=trange)
-    """
+    
 def test_fft_powerspectrum(data):
 
     test the powerspectrums length and type of export
