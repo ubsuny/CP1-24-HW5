@@ -40,25 +40,27 @@ def test_calc_freq(data):
 
 # Testing the determination of the frequency of the peak(s)
 def test_single_frequency():
-        """ Tests for the presence of a single frequency """
-        fs = 1000  # Sampling frequency in Hz
-        period = 1.0 / fs  # Sampling period
-        signal_length = 1000  # Length of signal
-        t = np.linspace(0.0, signal_length * period, signal_length, endpoint = False)
+    """ Tests for the presence of a single frequency """
+    fs = 1000  # Sampling frequency in Hz
+    period = 1.0 / fs  # Sampling period
+    signal_length = 1000  # Length of signal
+    t = np.linspace(0.0, signal_length * period, signal_length, endpoint = False)
 
-        # Generate a signal with a known single frequency at 50 Hz
-        frequency = 50
-        signal = np.sin(2 * np.pi * frequency * t)
+    # Generate a signal with a known single frequency at 50 Hz
+    frequency = 50
+    signal = np.sin(2 * np.pi * frequency * t)
 
-        # Convert signal to a pd.Series with a DatetimeIndex
-        time_index = pd.date_range(start="2023-01-01", periods=signal_length, freq=pd.Timedelta(seconds=period))
-        signal_series = pd.Series(signal, index=time_index)
+    # Convert signal to a pd.Series with a DatetimeIndex
+    time_index = pd.date_range(start="2023-01-01", periods=signal_length,
+                               freq=pd.Timedelta(seconds=period))
+    signal_series = pd.Series(signal, index=time_index)
 
-        # Find peak frequencies
-        peak_frequencies = find_peak_frequencies(signal_series)
+    # Find peak frequencies
+    peak_frequencies = find_peak_frequencies(signal_series)
 
-        # Check if the detected frequency is close to 50 Hz
-        assert any(np.isclose(peak_frequencies, frequency, atol=1)), "Failed to detect the correct frequency."
+    # Check if the detected frequency is close to 50 Hz
+    failed = "Failed to detect the correct frequency."
+    assert any(np.isclose(peak_frequencies, frequency, atol=1)), failed
 
 def test_multiple_frequencies():
     """ Tests for the presence of multiple frequencies """
@@ -72,7 +74,8 @@ def test_multiple_frequencies():
     signal = np.sin(2 * np.pi * frequencies[0] * t) + np.sin(2 * np.pi * frequencies[1] * t)
 
     # Convert signal to a pd.Series with a DatetimeIndex
-    time_index = pd.date_range(start="2023-01-01", periods=signal_length, freq=pd.Timedelta(seconds=period))
+    time_index = pd.date_range(start="2023-01-01", periods=signal_length,
+                               freq=pd.Timedelta(seconds=period))
     signal_series = pd.Series(signal, index=time_index)
 
     # Find peak frequencies
@@ -80,7 +83,8 @@ def test_multiple_frequencies():
 
     # Check if the detected frequencies include 50 Hz and 120 Hz
     for freq in frequencies:
-        assert any(np.isclose(peak_frequencies, freq, atol=1)), f"Failed to detect frequency {freq} Hz."
+        failed = f"Failed to detect frequency {freq} Hz."
+        assert any(np.isclose(peak_frequencies, freq, atol=1)), failed
 
 def test_no_signal():
     """ Tests for the case of no present frequencey to get detected """
@@ -90,7 +94,8 @@ def test_no_signal():
     signal = np.zeros(1000)  # A zero signal
 
     # Convert signal to a pd.Series with a DatetimeIndex
-    time_index = pd.date_range(start="2023-01-01", periods=signal_length, freq=pd.Timedelta(seconds=period))
+    time_index = pd.date_range(start="2023-01-01", periods=signal_length,
+                               freq=pd.Timedelta(seconds=period))
     signal_series = pd.Series(signal, index=time_index)
 
     # Find peak frequencies
