@@ -32,7 +32,9 @@ def fft_mag(data):
     matrix in half or take the absolut values of the variables"""
     n = len(data)
     timestamp_sum = sum(data.index[i+1].timestamp() - data.index[i].timestamp() for i in range(n-1))
-    if not timestamp_sum/(n-1) == data.index[2].timestamp() - data.index[1].timestamp():
+    compare = np.isclose(timestamp_sum/(n-1),
+                         data.index[2].timestamp() - data.index[1].timestamp(), atol=1e-6)
+    if not compare:
         print("Data is not evenly spaced or data points are missing")
         return None
     return np.fft.fft(data.values)
