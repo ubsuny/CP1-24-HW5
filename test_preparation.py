@@ -6,11 +6,22 @@ unit test for the functions fft_powerspectrum, fft_mag, inv_fft, calc_freq
 from datetime import datetime, timedelta
 import numpy as np
 import pandas as pd
-from preparation import fft_powerspectrum, fft_mag, inv_fft, calc_freq
 import pytest
+from preparation import fft_powerspectrum, fft_mag, inv_fft, calc_freq
 
-@pytest.fixture
-def data():
+@pytest.fixture(name="data")
+def setup_data():
+    """
+    Fixture that generates a sample time series of integer data with 
+    daily frequency over a 10-day period.
+
+    This function creates a `pandas.Series` containing a sequence of 
+    integers (1, 2, 3, 2, 1, 2, 3, 2, 1, 2)
+    with a daily datetime index starting from the current date and spanning the next 9 days.
+
+    Returns:
+        pd.Series: A time series of integer values with a daily frequency datetime index.
+    """
     trange = pd.date_range(datetime.now(), datetime.now() + timedelta(days=9), freq='d')
     return pd.Series([1, 2, 3, 2, 1, 2, 3, 2, 1, 2], index=trange)
 
