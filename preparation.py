@@ -10,6 +10,7 @@ calculate frequencies
 
 import numpy as np
 import pandas as pd
+from scipy.signal import find_peaks
 
 
 def fft_powerspectrum(data):
@@ -17,7 +18,9 @@ def fft_powerspectrum(data):
     the powerspectrum"""
     n = len(data)
     timestamp_sum = sum(data.index[i+1].timestamp() - data.index[i].timestamp() for i in range(n-1))
-    if not timestamp_sum/(n-1) == data.index[2].timestamp() - data.index[1].timestamp():
+    compare = np.isclose(timestamp_sum/(n-1),
+                         data.index[2].timestamp() - data.index[1].timestamp(), atol=1e-6)
+    if not compare:
         print("Data is not evenly spaced or data points are missing")
         return None
     matrx = np.fft.fft(data.values)
@@ -30,7 +33,7 @@ def fft_mag(data):
     n = len(data)
     timestamp_sum = sum(data.index[i+1].timestamp() - data.index[i].timestamp() for i in range(n-1))
     compare = np.isclose(timestamp_sum/(n-1),
-                          data.index[2].timestamp() - data.index[1].timestamp(), atol=1e-6)
+                         data.index[2].timestamp() - data.index[1].timestamp(), atol=1e-6)
     if not compare:
         print("Data is not evenly spaced or data points are missing")
         return None
@@ -50,7 +53,7 @@ def calc_freq(data, tim):
     n = len(data)
     timestamp_sum = sum(data.index[i+1].timestamp() - data.index[i].timestamp() for i in range(n-1))
     diftim = data.index[2].timestamp() - data.index[1].timestamp()
-    if not timestamp_sum/(n-1) == diftim:
+    if not np.isclose(timestamp_sum/(n-1), diftim, atol=1e-6):
         print("Data is not evenly spaced or data points are missing")
         return None
     if tim.strip().lower() == 'day':
@@ -102,3 +105,28 @@ def get_timeseries(path, datecolumn = 'date', datacolumn = 'CO2 (ppm)'):
     co2_series = df[datacolumn]
 
     return co2_series
+
+
+def find_peak_frequencies(data, tim="second"):
+    """
+    Finds the frequencies of the peaks in the power spectrum of the data.
+    Parameters:
+        Inputs:
+            data: A time series with timestamps as the index
+                  and amplitude values as the data.
+            tim: A string specifying the time unit in which you want the frequencies,
+                 e.g., "second," "day," or "month."
+        Outputs:
+            frequencies, an array of frequency values
+            (in Hz by default, or in days or months if specified)
+            corresponding to each FFT component.
+    """
+    power_spectrum = fft_powerspectrum(data)
+    if power_spectrum is None:
+        return None
+    frequencies = calc_freq(data, tim)
+    threshold = np.median(power_spectrum)
+    # Adjust the threshold based on data characteristics
+    peaks, _ = find_peaks(power_spectrum, height = threshold)
+    peak_frequencies = frequencies[peaks]
+    return peak_frequencies
