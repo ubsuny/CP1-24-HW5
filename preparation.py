@@ -87,19 +87,22 @@ def get_timeseries(path, datecolumn = 'date', datacolumn = 'CO2 (ppm)'):
 
     #Extracts data from the json file at the input path
     data = pd.read_json(path)
+
+    # Convert JSON data to DataFrame
+    df = pd.DataFrame(data)
+
     #Uses the month and year information from the json file,
     # assumes data was taken on the first of each month,
     # creates new column with datetime
-    
-    if datecolumn == "date": 
-        data['date'] = pd.to_datetime(data[['Year', 'Month']].assign(Day=1))
+
+    if datecolumn == "date":
+        df['date'] = pd.to_datetime(data[['year', 'month']].assign(Day=1))
 
     #Sets datetime as index
-    data.set_index(datecolumn, inplace=True)
+    df.set_index(datecolumn, inplace=True)
 
     #Creates timeseries with co2 (ppm) as data and datetime as index
-    co2_series = data[datacolumn]
-
+    co2_series = df[datacolumn]
 
     return co2_series
 
